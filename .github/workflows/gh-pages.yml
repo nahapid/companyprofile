@@ -54,7 +54,7 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo --minify --baseURL "https://nahapid.github.io/companyprofile/"
+          hugo --minify --baseURL "https://nahap.my.id/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
