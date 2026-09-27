@@ -6,7 +6,7 @@
 # Website name (set in params.yaml under hugoblox.branding.name)
 title: 'NAHAP'
 # Website URL
-baseURL: 'https://nahap.com/'
+baseURL: 'https://nahapid.github.io/companyprofile/'
 
 ############################
 ## LANGUAGE
