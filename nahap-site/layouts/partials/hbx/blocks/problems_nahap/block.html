@@ -1,0 +1,60 @@
+{{ $block := .wcBlock }}
+
+<section class="py-10 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-8" data-aos="fade-up">
+      {{ if $block.content.subtitle }}
+      <div class="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-semibold tracking-wide uppercase">
+        {{ $block.content.subtitle }}
+      </div>
+      {{ end }}
+
+      {{ if $block.content.title }}
+      <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+        {{ $block.content.title }}
+      </h2>
+      {{ end }}
+
+      {{ if $block.content.text }}
+      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+        {{ $block.content.text }}
+      </p>
+      {{ end }}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {{ range $index, $item := $block.content.items }}
+      <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-200/60 dark:border-slate-700 hover:-translate-y-2 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="{{ mul $index 100 }}">
+        
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm
+          {{ if eq $index 0 }}bg-red-50 dark:bg-red-900/40 text-red-600 dark:text-red-400
+          {{ else if eq $index 1 }}bg-orange-50 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400
+          {{ else if eq $index 2 }}bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400
+          {{ else }}bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300{{ end }}">
+          
+          {{ if eq $index 0 }}
+            <!-- Exclamation Triangle -->
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          {{ else if eq $index 1 }}
+            <!-- Lock Open -->
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          {{ else if eq $index 2 }}
+            <!-- Globe Alt -->
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+          {{ else }}
+            <!-- Eye Slash -->
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
+          {{ end }}
+        </div>
+        
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+          {{ $item.name }}
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-[1.05rem]">
+          {{ $item.description }}
+        </p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

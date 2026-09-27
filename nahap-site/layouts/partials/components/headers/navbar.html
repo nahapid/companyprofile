@@ -1,0 +1,173 @@
+<header x-data="{ mobileMenuOpen: false }"
+  class="sticky w-full top-0 z-50 transition-all duration-300 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-slate-800 py-3 left-0">
+  <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+    <div class="flex items-center justify-between">
+      <!-- Logo Section -->
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3 group">
+          <!-- You can insert logo image here if needed -->
+          <div class="flex items-center gap-3 md:gap-4">
+            <img src="/images/logo.jpg" alt="NAHAP Logo"
+              class="h-10 md:h-12 w-auto object-contain rounded border border-gray-100 dark:border-slate-800">
+            <div class="flex flex-col justify-center hidden sm:flex">
+              <span
+                class="block text-lg md:text-xl font-extrabold text-gray-900 dark:text-white leading-none tracking-tight group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">NAHAP</span>
+              <span
+                style="font-size: 10px; transform: scale(0.92); transform-origin: left; width: 110%; display: block;"
+                class="text-slate-500 dark:text-slate-400 font-normal tracking-tight mt-0.5 uppercase"
+                data-i18n="nav.tagline">Network Architecture, Hardening, and Protection</span>
+            </div>
+            <div class="flex flex-col justify-center sm:hidden">
+              <span class="block text-lg font-extrabold text-gray-900 dark:text-white leading-none">NAHAP</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <!-- DEBUG: {{ range site.Menus.main }}{{ .Name }} (HasChildren: {{ .HasChildren }}) | {{ end }} -->
+      <nav class="hidden lg:flex items-center gap-6">
+        {{ range site.Menus.main }}
+          {{ if .HasChildren }}
+          <div class="relative group" x-data="{ dropdownOpen: false }" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false">
+            <a href="{{ .URL }}"
+              class="text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400 transition-colors py-2 flex items-center gap-1">
+              <span data-i18n="nav.{{ lower .Name }}">{{ .Name }}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+            <!-- Dropdown Menu -->
+            <div x-show="dropdownOpen" style="display: none;"
+                 x-transition:enter="transition-all duration-200"
+                 x-transition:enter-start="opacity-0 translate-y-2 invisible"
+                 x-transition:enter-end="opacity-100 translate-y-0 visible"
+                 x-transition:leave="transition-all duration-200"
+                 x-transition:leave-start="opacity-100 translate-y-0 visible"
+                 x-transition:leave-end="opacity-0 translate-y-2 invisible"
+                 class="absolute top-full left-0 pt-2 z-50 min-w-[240px]">
+              <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-gray-100 dark:border-slate-800 py-2 overflow-hidden">
+                {{ range .Children }}
+                <a href="{{ .URL }}" class="block px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" data-i18n='nav.{{ replace .Name " " "_" | lower }}'>
+                  {{ .Name }}
+                </a>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          {{ else }}
+          <div class="relative group">
+            <a href="{{ .URL }}"
+              class="text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400 transition-colors py-2 flex items-center gap-1"
+              data-i18n="nav.{{ lower .Name }}">
+              {{ .Name }}
+            </a>
+          </div>
+          {{ end }}
+        {{ end }}
+      </nav>
+
+      <!-- CTA Button & Mobile Toggle -->
+      <div class="flex items-center gap-2 md:gap-3">
+
+        <!-- Language Toggle -->
+        <div class="flex items-center rounded-full border border-slate-200 dark:border-slate-700 overflow-hidden text-xs font-bold">
+          <button id="lang-en"
+            class="px-2.5 py-1 bg-blue-700 text-white transition-colors"
+            title="English">EN</button>
+          <button id="lang-id"
+            class="px-2.5 py-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            title="Bahasa Indonesia">ID</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button
+          class="theme-toggle flex items-center justify-center w-9 h-9 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+          accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="block dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="hidden dark:block">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="/contact/"
+            class="px-5 py-2.5 bg-blue-700 text-white text-sm font-bold rounded-full hover:bg-blue-800 transition-all duration-200 shadow-lg shadow-blue-700/20 hover:shadow-blue-700/40 transform hover:-translate-y-0.5"
+            data-i18n="nav.request_consultation">
+            Request Consultation
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button @click="mobileMenuOpen = !mobileMenuOpen"
+          class="lg:hidden text-gray-700 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-lg p-2 transition-all"
+          aria-label="Toggle menu">
+          <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="mobileMenuOpen" style="display:none;" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div x-show="mobileMenuOpen" style="display:none;" @click.away="mobileMenuOpen = false"
+      x-transition:enter="transition duration-200 ease-out"
+      x-transition:enter-start="transform -translate-y-2 opacity-0"
+      x-transition:enter-end="transform translate-y-0 opacity-100" x-transition:leave="transition duration-150 ease-in"
+      x-transition:leave-start="transform translate-y-0 opacity-100"
+      x-transition:leave-end="transform -translate-y-2 opacity-0"
+      class="lg:hidden mt-4 bg-white dark:bg-slate-900 rounded-xl shadow-xl p-4 border border-gray-100 dark:border-slate-800 absolute left-4 right-4 top-16 z-50">
+      <nav class="flex flex-col gap-1">
+        {{ range site.Menus.main }}
+          {{ if .HasChildren }}
+            <div class="flex flex-col">
+              <div class="flex justify-between items-center px-4 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 transition-all">
+                <a href="{{ .URL }}" class="text-gray-700 dark:text-gray-200 font-medium hover:text-blue-700 dark:hover:text-blue-400 flex-grow" data-i18n="nav.{{ lower .Name }}">
+                  {{ .Name }}
+                </a>
+              </div>
+              <div class="flex flex-col gap-1 border-l-2 border-slate-100 dark:border-slate-800 ml-6 pl-4 mt-1 mb-2">
+                {{ range .Children }}
+                <a href="{{ .URL }}" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-400 transition-all" data-i18n='nav.{{ replace .Name " " "_" | lower }}'>
+                  {{ .Name }}
+                </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ else }}
+            <a href="{{ .URL }}"
+              class="block px-4 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 font-medium hover:text-blue-700 dark:hover:text-blue-400 transition-all"
+              data-i18n="nav.{{ lower .Name }}">
+              {{ .Name }}
+            </a>
+          {{ end }}
+        {{ end }}
+
+        <hr class="my-2 border-gray-100 dark:border-slate-800">
+        <a href="/contact/"
+          class="px-4 py-3 bg-blue-700 text-white text-center font-bold rounded-lg hover:bg-blue-800 transition-all shadow-lg shadow-blue-700/20"
+          data-i18n="nav.request_consultation">
+          Request Consultation
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+<script src="/js/i18n.js?v={{ now.Unix }}" defer></script>

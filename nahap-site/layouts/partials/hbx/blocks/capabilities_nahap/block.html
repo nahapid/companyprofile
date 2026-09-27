@@ -1,0 +1,71 @@
+{{ $block := .wcBlock }}
+
+<section class="relative py-10 bg-slate-50 dark:bg-[#07111F] overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-3xl opacity-50 transform translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-3xl opacity-50 transform -translate-x-1/3 translate-y-1/3"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-8" data-aos="fade-up">
+      {{ if $block.content.subtitle }}
+      <div class="inline-flex items-center justify-center px-5 py-2 mb-6 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-bold tracking-widest uppercase border border-blue-200 dark:border-blue-800/50 shadow-sm">
+        {{ $block.content.subtitle }}
+      </div>
+      {{ end }}
+      
+      {{ if $block.content.title }}
+      <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
+        {{ $block.content.title }}
+      </h2>
+      {{ end }}
+      
+      {{ if $block.content.text }}
+      <p class="text-xl text-slate-600 dark:text-slate-400">
+        {{ $block.content.text }}
+      </p>
+      {{ end }}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {{ range $index, $item := $block.content.items }}
+      <div class="group relative bg-white dark:bg-slate-800/60 backdrop-blur-xl rounded-[2rem] p-10 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 overflow-hidden" data-aos="fade-up" data-aos-delay="{{ mul $index 100 }}">
+        
+        <!-- Hover Gradient Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent dark:from-blue-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <!-- Top Right Decorative Circle -->
+        <div class="absolute -top-12 -right-12 w-32 h-32 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/10 dark:group-hover:bg-blue-500/20 transition-colors duration-500"></div>
+
+        <div class="relative z-10 flex flex-col h-full">
+          <!-- Icon -->
+          <div class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-900/80 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 text-blue-600 dark:text-blue-400 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 group-hover:ring-0">
+            {{ if eq $index 0 }}
+              <!-- Server/Network -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+            {{ else if eq $index 1 }}
+              <!-- Shield -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            {{ else if eq $index 2 }}
+              <!-- Chart/Managed -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            {{ else }}
+              <!-- Eye/Visibility -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            {{ end }}
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">
+            {{ $item.name }}
+          </h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg flex-grow">
+            {{ $item.description }}
+          </p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

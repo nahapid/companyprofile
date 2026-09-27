@@ -1,0 +1,155 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   NAHAP — Custom CSS
+   Enterprise Network & Cybersecurity Engineering
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Perfect Centered Header (Simetris) ─── */
+@media (min-width: 1024px) {
+  .header nav { position: relative !important; }
+  .header nav > ul#nav-menu {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+
+.animate-blob { animation: blob 7s infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@media (max-width: 768px) {
+  .animate-blob {
+    animation: none;
+    filter: blur(40px);
+    opacity: 0.4;
+  }
+}
+
+/* ==========================================
+   ROBUST TAILWIND POLYFILLS & THEME OVERRIDES
+   Because HugoBlox compiler doesn't scan
+   custom layouts for some Tailwind classes.
+   ========================================== */
+
+/* Fix HugoBlox default background leaking through gaps */
+html:not(.dark) {
+  --hb-color-background: #f8fafc !important; /* bg-slate-50 */
+}
+html.dark {
+  --hb-color-background: #0f172a !important; /* bg-slate-900 */
+}
+
+/* LIGHT MODE POLYFILLS */
+html:not(.dark) .text-slate-900 { color: #0f172a !important; }
+html:not(.dark) .text-slate-800 { color: #1e293b !important; }
+html:not(.dark) .text-slate-700 { color: #334155 !important; }
+html:not(.dark) .text-slate-600 { color: #475569 !important; }
+html:not(.dark) .text-slate-500 { color: #64748b !important; }
+html:not(.dark) .text-slate-400 { color: #94a3b8 !important; }
+
+html:not(.dark) .bg-slate-50 { background-color: #f8fafc !important; }
+html:not(.dark) .bg-slate-100 { background-color: #f1f5f9 !important; }
+html:not(.dark) .bg-slate-200 { background-color: #e2e8f0 !important; }
+html:not(.dark) .bg-slate-800 { background-color: #1e293b !important; }
+html:not(.dark) .bg-white { background-color: #ffffff !important; }
+
+html:not(.dark) .border-slate-100 { border-color: #f1f5f9 !important; }
+html:not(.dark) .border-slate-200 { border-color: #e2e8f0 !important; }
+
+/* DARK MODE POLYFILLS (dark: modifier) */
+html.dark .dark\:text-white { color: #ffffff !important; }
+html.dark .dark\:text-slate-400 { color: #94a3b8 !important; }
+html.dark .dark\:text-slate-300 { color: #cbd5e1 !important; }
+html.dark .dark\:text-blue-400 { color: #60a5fa !important; }
+html.dark .dark\:text-orange-400 { color: #fb923c !important; }
+html.dark .dark\:text-green-400 { color: #4ade80 !important; }
+
+html.dark .dark\:bg-slate-900 { background-color: #0f172a !important; }
+html.dark .dark\:bg-slate-800 { background-color: #1e293b !important; }
+html.dark .dark\:bg-slate-700 { background-color: #334155 !important; }
+html.dark .dark\:bg-slate-600 { background-color: #475569 !important; }
+
+html.dark .dark\:bg-blue-900\/50 { background-color: rgba(30, 58, 138, 0.5) !important; }
+html.dark .dark\:bg-orange-900\/50 { background-color: rgba(124, 45, 18, 0.5) !important; }
+html.dark .dark\:bg-green-900\/50 { background-color: rgba(20, 83, 45, 0.5) !important; }
+
+html.dark .dark\:border-slate-800 { border-color: #1e293b !important; }
+html.dark .dark\:border-slate-700 { border-color: #334155 !important; }
+html.dark .dark\:border-slate-600 { border-color: #475569 !important; }
+html.dark .dark\:border-red-900\/30 { border-color: rgba(127, 29, 29, 0.3) !important; }
+
+html.dark .dark\:from-slate-900 { --tw-gradient-from: #0f172a !important; --tw-gradient-to: rgba(15, 23, 42, 0) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+html.dark .dark\:to-slate-800 { --tw-gradient-to: #1e293b !important; }
+html.dark .dark\:to-slate-900 { --tw-gradient-to: #0f172a !important; }
+
+/* Existing polyfills for gray/blue */
+html:not(.dark) .text-gray-900 { color: #111827 !important; }
+html:not(.dark) .text-gray-800 { color: #1f2937 !important; }
+html:not(.dark) .text-gray-700 { color: #374151 !important; }
+html:not(.dark) .text-gray-600 { color: #4b5563 !important; }
+html:not(.dark) .text-gray-500 { color: #6b7280 !important; }
+html:not(.dark) .bg-gray-50 { background-color: #f9fafb !important; }
+html:not(.dark) .bg-gray-100 { background-color: #f3f4f6 !important; }
+
+/* Markdown Prose Text Fixes for Light Mode */
+html:not(.dark) .prose { color: #374151 !important; }
+html:not(.dark) .prose h1, 
+html:not(.dark) .prose h2, 
+html:not(.dark) .prose h3, 
+html:not(.dark) .prose h4,
+html:not(.dark) .prose strong,
+html:not(.dark) .prose th { 
+  color: #111827 !important; 
+}
+html:not(.dark) .prose a { color: #2563eb !important; }
+
+/* ─── Premium Technologies Section ─── */
+#technologies {
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+html.dark #technologies {
+  border-color: rgba(255,255,255,0.05);
+}
+#technologies h2, #technologies h3, #technologies .block-title, #technologies h1 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 2rem !important;
+}
+html.dark #technologies h2, html.dark #technologies h3, html.dark #technologies .block-title, html.dark #technologies h1 {
+  background: linear-gradient(135deg, #60a5fa, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#technologies svg {
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  color: #4b5563 !important;
+}
+#technologies svg:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  color: #1d4ed8 !important;
+}
+html.dark #technologies svg {
+  color: #9ca3af !important;
+}
+html.dark #technologies svg:hover {
+  color: #60a5fa !important;
+}
+
+/* Custom Styles for Extracted Reference Blocks (Contact, About, etc.) */
+.animate-bounce-slow { animation: bounce 3s infinite; }
+.grid-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
