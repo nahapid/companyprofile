@@ -1,5 +1,7 @@
 ---
 title: 'NAHAP | Enterprise Network & Cybersecurity Engineering'
+description: 'NAHAP adalah penyedia layanan Enterprise Network, Cybersecurity, dan Managed Infrastructure untuk industri, korporat, dan pemerintahan di Indonesia.'
+summary: 'Enterprise Network & Cybersecurity Engineering'
 date: 2026-09-26
 type: landing
 
