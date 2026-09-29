@@ -1,4 +1,4 @@
----
+﻿---
 title: Selected Engineering Work
 summary: Case studies demonstrating structured engineering methodology, technical precision and measurable outcomes.
 type: landing
@@ -50,3 +50,4 @@ sections:
       card:
         css_class: "bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white shadow-2xl"
 ---
+

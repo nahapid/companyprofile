@@ -1,6 +1,6 @@
----
+﻿---
 title: "Enterprise Network Hardening"
-summary: "Systematic security hardening of enterprise network infrastructure — configuration audit, service minimization, ACL review and segmentation."
+summary: "Systematic security hardening of enterprise network infrastructure - configuration audit, service minimization, ACL review and segmentation."
 date: 2026-09-15
 tags:
   - Security Engineering
@@ -34,49 +34,49 @@ An enterprise organization with existing network infrastructure had excessive ex
 ## Existing Architecture
 
 ```text
-  ┌─────────────────────────────┐
-  │     FLAT NETWORK            │
-  │                             │
-  │  Servers ── Workstations    │
-  │     │           │           │
-  │   Printers ── IoT Devices   │
-  │     │           │           │
-  │  Guest Wi-Fi ── Corp Wi-Fi  │
-  │                             │
-  │  (No Segmentation)          │
-  └─────────────────────────────┘
+  +-----------------------------+
+  |     FLAT NETWORK            |
+  |                             |
+  |  Servers -- Workstations    |
+  |     |           |           |
+  |   Printers -- IoT Devices   |
+  |     |           |           |
+  |  Guest Wi-Fi -- Corp Wi-Fi  |
+  |                             |
+  |  (No Segmentation)          |
+  +-----------------------------+
 ```
 
 ## Proposed Architecture
 
 ```text
-  ┌──────────────────────────────────┐
-  │         CORE FIREWALL            │
-  │         (Zone-Based)             │
-  └───────────┬──────────────────────┘
-         ┌────┴────────────────┐
+  +----------------------------------+
+  |         CORE FIREWALL            |
+  |         (Zone-Based)             |
+  +---------------------------------+
+         +--------------------+
     ZONE: SERVER    ZONE: USER     ZONE: IOT
     VLAN 10         VLAN 20        VLAN 30
-    ┌────────┐     ┌────────┐     ┌────────┐
-    │Servers │     │Workst. │     │IoT/OT  │
-    │Database│     │Corp WiFi│    │Printers│
-    └────────┘     └────────┘     └────────┘
+    +--------+     +--------+     +--------+
+    |Servers |     |Workst. |     |IoT/OT  |
+    |Database|     |Corp WiFi|    |Printers|
+    +--------+     +--------+     +--------+
                    ZONE: GUEST
                    VLAN 40
-                   ┌────────┐
-                   │Guest   │
-                   │WiFi    │
-                   └────────┘
+                   +--------+
+                   |Guest   |
+                   |WiFi    |
+                   +--------+
 ```
 
 ## Implementation
 
-1. **Audit** — Full device configuration audit against CIS benchmarks
-2. **Baseline** — Define hardening baseline per device type
-3. **Harden** — Apply hardening configurations in maintenance windows
-4. **Segment** — Implement VLAN segmentation with inter-VLAN firewall policies
-5. **Validate** — Vulnerability scan, access verification, service enumeration
-6. **Document** — Hardening baseline documentation and operational procedures
+1. **Audit** - Full device configuration audit against CIS benchmarks
+2. **Baseline** - Define hardening baseline per device type
+3. **Harden** - Apply hardening configurations in maintenance windows
+4. **Segment** - Implement VLAN segmentation with inter-VLAN firewall policies
+5. **Validate** - Vulnerability scan, access verification, service enumeration
+6. **Document** - Hardening baseline documentation and operational procedures
 
 ## Technology Stack
 
@@ -88,7 +88,8 @@ An enterprise organization with existing network infrastructure had excessive ex
 
 ## Outcome
 
-- **Reduced attack surface** — Unnecessary services disabled, default credentials removed
-- **Network segmentation** — Lateral movement contained with zone-based policies
-- **Consistent configuration** — Standardized hardening baseline across all devices
-- **Auditable infrastructure** — Documented baselines and change management procedures
+- **Reduced attack surface** - Unnecessary services disabled, default credentials removed
+- **Network segmentation** - Lateral movement contained with zone-based policies
+- **Consistent configuration** - Standardized hardening baseline across all devices
+- **Auditable infrastructure** - Documented baselines and change management procedures
+

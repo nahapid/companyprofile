@@ -1,14 +1,14 @@
-{{ $block := .wcBlock }}
+﻿{{ $block := .wcBlock }}
 
-{{/* ──────────────────────────────────────────────────────────────────────────
-     METHODOLOGY — Premium Timeline Block
+{{/* 
+     METHODOLOGY  Premium Timeline Block
      A stunning 5-step engineering methodology section with animated timeline,
      glassmorphism cards, gradient step indicators and micro-interactions.
-     ────────────────────────────────────────────────────────────────────────── */}}
+      */}}
 
 <div class="relative py-12 md:py-16 overflow-hidden">
 
-  {{/* ── Decorative Background Elements ── */}}
+  {{/*  Decorative Background Elements  */}}
   <div class="absolute inset-0 pointer-events-none">
     {{/* Subtle grid pattern */}}
     <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
@@ -21,7 +21,7 @@
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
 
-    {{/* ── Section Header ── */}}
+    {{/*  Section Header  */}}
     <div class="text-center max-w-3xl mx-auto mb-12 md:mb-14">
 
       {{/* Subtitle badge */}}
@@ -51,11 +51,11 @@
       {{ end }}
     </div>
 
-    {{/* ── Desktop Timeline (lg+) ── */}}
+    {{/*  Desktop Timeline (lg+)  */}}
     {{ with $block.content.items }}
     <div class="hidden lg:block relative">
 
-      {{/* ── Connecting line ── */}}
+      {{/*  Connecting line  */}}
       <div class="absolute top-[3.5rem] left-[10%] right-[10%] h-[3px] z-0">
         {{/* Background track */}}
         <div class="absolute inset-0 rounded-full bg-slate-200 dark:bg-slate-800"></div>
@@ -65,7 +65,7 @@
              style="background-size: 200% 100%;"></div>
       </div>
 
-      {{/* ── Steps Grid ── */}}
+      {{/*  Steps Grid  */}}
       <div class="grid grid-cols-5 gap-6 xl:gap-8 relative z-10">
         {{ range $index, $item := . }}
         <div class="group flex flex-col items-center text-center h-full">
@@ -154,7 +154,7 @@
       </div>
     </div>
 
-    {{/* ── Mobile Timeline (< lg) ── */}}
+    {{/*  Mobile Timeline (< lg)  */}}
     <div class="lg:hidden relative">
 
       {{/* Vertical connecting line */}}

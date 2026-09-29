@@ -93,13 +93,13 @@ const NAHAP_TRANSLATIONS = {
     "case.f1": "Multi-Site Network Redesign with SD-WAN",
     "case.f2": "Enterprise Network Hardening & Segmentation",
     "case.f3": "Enterprise Wi-Fi Deployment & Management",
-    "case.btn": "View Case Studies â†’",
+    "case.btn": "View Case Studies",
     "insights.title": "Engineering Insights",
     "insights.subtitle": "Technical articles on enterprise networking, cybersecurity architecture, and infrastructure best practices written by our engineering team.",
     "insights.f1": "Enterprise Network Architecture",
     "insights.f2": "Firewall Hardening Checklist",
     "insights.f3": "Network Segmentation Best Practices",
-    "insights.btn": "Read Insights â†’",
+    "insights.btn": "Read Insights",
     // FAQ
     "faq.badge": "Common questions about our engineering services.",
     "faq.title": "Frequently Asked Questions",
@@ -358,7 +358,7 @@ const NAHAP_TRANSLATIONS = {
     "hero.title_1": "Rekayasa Jaringan &",
     "hero.title_2": "Keamanan Siber",
     "hero.subtitle": "Kami merancang, mengamankan, menyebarkan, dan mengoperasikan infrastruktur jaringan yang andal untuk lingkungan enterprise, industri, dan terdistribusi.",
-    "hero.btn_explore": "Lihat Solusi â†’",
+    "hero.btn_explore": "Lihat Solusi",
     "hero.key_capabilities": "KEMAMPUAN UTAMA:",
     "hero.cap_arch": "Arsitektur",
     "hero.cap_hard": "Hardening",
@@ -427,13 +427,13 @@ const NAHAP_TRANSLATIONS = {
     "case.f1": "Redesain Jaringan Multi-Lokasi dengan SD-WAN",
     "case.f2": "Hardening & Segmentasi Jaringan Enterprise",
     "case.f3": "Deployment & Manajemen Wi-Fi Enterprise",
-    "case.btn": "Lihat Case Studies â†’",
+    "case.btn": "Lihat Case Studies",
     "insights.title": "Wawasan Rekayasa",
     "insights.subtitle": "Artikel teknis tentang jaringan enterprise, arsitektur keamanan siber, dan praktik terbaik infrastruktur oleh tim rekayasa kami.",
     "insights.f1": "Arsitektur Jaringan Enterprise",
     "insights.f2": "Checklist Hardening Firewall",
     "insights.f3": "Praktik Terbaik Segmentasi Jaringan",
-    "insights.btn": "Baca Wawasan â†’",
+    "insights.btn": "Baca Wawasan",
     // FAQ
     "faq.badge": "Pertanyaan umum tentang layanan rekayasa kami.",
     "faq.title": "Pertanyaan Yang Sering Diajukan",
@@ -685,7 +685,7 @@ const NAHAP_TRANSLATIONS = {
   }
 };
 
-// â”€â”€â”€ Text-node substitution map (EN â†’ ID) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Text-node substitution map (EN -> ID) -------------------------
 // For Hugo Blox built-in blocks that don't have data-i18n attributes,
 // we do a recursive textNode walk to find and replace exact strings.
 function buildSwapMap(lang) {

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Firewall Hardening Checklist for Enterprise Networks"
-summary: "A practical checklist for hardening enterprise firewalls — covering management access, rule review, logging, service minimization and configuration management."
+summary: "A practical checklist for hardening enterprise firewalls - covering management access, rule review, logging, service minimization and configuration management."
 date: 2026-09-20
 tags:
   - Cybersecurity
@@ -19,17 +19,17 @@ Firewalls are the primary perimeter defense for enterprise networks. However, a 
 ## Management Access
 
 - [ ] Change all default passwords
-- [ ] Disable HTTP management — use HTTPS only
+- [ ] Disable HTTP management - use HTTPS only
 - [ ] Restrict management access to dedicated management VLAN
 - [ ] Implement multi-factor authentication (MFA) for admin access
-- [ ] Configure management access ACLs — whitelist management IPs only
-- [ ] Disable Telnet — use SSH with key-based authentication
-- [ ] Disable SNMP v1/v2c — use SNMP v3 with authentication
+- [ ] Configure management access ACLs - whitelist management IPs only
+- [ ] Disable Telnet - use SSH with key-based authentication
+- [ ] Disable SNMP v1/v2c - use SNMP v3 with authentication
 - [ ] Set session timeout for idle management sessions
 
 ## Firmware and Patches
 
-- [ ] Run current stable firmware — not the absolute latest, but patched
+- [ ] Run current stable firmware - not the absolute latest, but patched
 - [ ] Subscribe to vendor security advisories
 - [ ] Establish a patch management schedule
 - [ ] Test firmware updates in lab before production deployment
@@ -41,10 +41,10 @@ Firewalls are the primary perimeter defense for enterprise networks. However, a 
 - [ ] Implement explicit deny-all as the last rule
 - [ ] Review and remove unused rules
 - [ ] Review overly permissive rules (any-any, any-all-services)
-- [ ] Group rules by function — use comments and sections
+- [ ] Group rules by function - use comments and sections
 - [ ] Verify every rule has a documented business justification
 - [ ] Set rule expiration for temporary access
-- [ ] Review hit counts — zero-hit rules should be investigated
+- [ ] Review hit counts - zero-hit rules should be investigated
 
 ## Logging and Monitoring
 
@@ -100,8 +100,9 @@ Firewalls are the primary perimeter defense for enterprise networks. However, a 
 
 ## Conclusion
 
-Firewall hardening is not a one-time activity — it requires ongoing discipline. Start with this checklist, customize it for your environment, and establish a regular review cadence.
+Firewall hardening is not a one-time activity - it requires ongoing discipline. Start with this checklist, customize it for your environment, and establish a regular review cadence.
 
 ---
 
 *Need help hardening your firewall infrastructure? [Request a security assessment](/contact/).*
+

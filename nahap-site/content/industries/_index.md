@@ -1,4 +1,4 @@
----
+﻿---
 title: Industries
 summary: Infrastructure engineering for distributed environments.
 type: landing
@@ -8,7 +8,7 @@ sections:
     content:
       eyebrow: Industries
       title: Infrastructure engineering for [distributed] environments
-      text: We understand the unique infrastructure challenges of each industry — from remote mining sites to corporate headquarters.
+      text: We understand the unique infrastructure challenges of each industry - from remote mining sites to corporate headquarters.
       primary_action:
         text: Request Consultation
         url: "/contact/"
@@ -86,3 +86,4 @@ sections:
       card:
         css_class: "bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white shadow-2xl"
 ---
+

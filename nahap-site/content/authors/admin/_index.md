@@ -1,4 +1,4 @@
----
+﻿---
 title: NAHAP
 role: Enterprise Network & Cybersecurity Engineering
 avatar_filename: ""
@@ -10,4 +10,5 @@ organizations:
 superuser: true
 ---
 
-NAHAP — **Network Architecture, Hardening & Protection** — is an engineering company focused on enterprise network and cybersecurity infrastructure. We provide architecture design, security engineering, and managed infrastructure services for organizations operating critical and distributed environments across Indonesia.
+NAHAP - **Network Architecture, Hardening & Protection** - is an engineering company focused on enterprise network and cybersecurity infrastructure. We provide architecture design, security engineering, and managed infrastructure services for organizations operating critical and distributed environments across Indonesia.
+

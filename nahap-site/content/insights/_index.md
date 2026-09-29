@@ -1,4 +1,4 @@
----
+﻿---
 title: Security Insights
 summary: Latest Intel
 type: landing
@@ -10,3 +10,4 @@ sections:
       spacing:
         padding: ['0', '0', '0', '0']
 ---
+

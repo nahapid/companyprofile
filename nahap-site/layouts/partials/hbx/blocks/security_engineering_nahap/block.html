@@ -1,7 +1,9 @@
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+
 <div class="bg-slate-50 dark:bg-slate-900 min-h-screen">
     <!-- Hero Section -->
     <div class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-900">
-      <!-- Animated Background Elements -->
       <div class="absolute inset-0 overflow-hidden">
         <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
@@ -10,20 +12,21 @@
 
       <div class="container mx-auto px-4 py-16 relative z-10">
         <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+          {{ if $content.hero.eyebrow }}
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-sm font-medium mb-6">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            Solutions
+            {{ $content.hero.eyebrow }}
           </div>
+          {{ end }}
           <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Security Engineering
+            {{ $content.hero.title }}
           </h1>
           <p class="text-lg md:text-xl text-blue-100/80 max-w-3xl mx-auto leading-relaxed mb-10">
-            We engineer security into every layer of your network — from perimeter firewalls to internal segmentation to zero trust architecture.
+            {{ $content.hero.text }}
           </p>
         </div>
       </div>
       
-      <!-- Bottom Wave -->
       <div class="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 120" fill="none" class="w-full text-slate-50 dark:text-slate-900">
           <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="currentColor"/>
@@ -32,152 +35,87 @@
     </div>
 
     <!-- Services Grid -->
+    {{ if $content.services }}
     <div class="container mx-auto px-4 py-12">
       <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Security Engineering Services</h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Comprehensive security protocols designed to protect your data at every layer of the network stack.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">{{ $content.services.title }}</h2>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{{ $content.services.subtitle }}</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Item 1 -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="0">
-          <div class="w-14 h-14 bg-red-50 dark:bg-red-900/50 rounded-2xl flex items-center justify-center text-red-600 dark:text-red-400 mb-6">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        {{ range $index, $item := $content.services.items }}
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="{{ mul $index 100 }}">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 
+            {{ if eq $index 0 }} bg-red-50 dark:bg-red-900/50 text-red-600 dark:text-red-400
+            {{ else if eq $index 1 }} bg-orange-50 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400
+            {{ else if eq $index 2 }} bg-amber-50 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400
+            {{ else if eq $index 3 }} bg-emerald-50 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400
+            {{ else if eq $index 4 }} bg-teal-50 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400
+            {{ else }} bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400
+            {{ end }}
+          ">
+            {{ if eq $index 0 }}
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            {{ else if eq $index 1 }}
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            {{ else if eq $index 2 }}
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            {{ else if eq $index 3 }}
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            {{ else if eq $index 4 }}
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+            {{ else }}
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+            {{ end }}
           </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Firewall Deployment</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Enterprise firewall design, deployment and policy configuration for perimeter and internal security enforcement.</p>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">{{ $item.title }}</h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">{{ $item.text }}</p>
         </div>
-        
-        <!-- Item 2 -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-14 h-14 bg-orange-50 dark:bg-orange-900/50 rounded-2xl flex items-center justify-center text-orange-600 dark:text-orange-400 mb-6">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Firewall Rule Review</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Systematic review of firewall policies, rule optimization and removal of unnecessary access to reduce attack surface.</p>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/50 rounded-2xl flex items-center justify-center text-amber-600 dark:text-amber-400 mb-6">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Network Hardening</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Device hardening, service minimization, protocol security and configuration baseline enforcement.</p>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-14 h-14 bg-emerald-50 dark:bg-emerald-900/50 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-6">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Network Segmentation</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">VLAN-based segmentation, micro-segmentation strategy and inter-zone access control design.</p>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="400">
-          <div class="w-14 h-14 bg-teal-50 dark:bg-teal-900/50 rounded-2xl flex items-center justify-center text-teal-600 dark:text-teal-400 mb-6">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">VPN & Remote Access</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Site-to-site VPN, remote access VPN and secure connectivity for distributed workforce.</p>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="500">
-          <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/50 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Zero Trust Architecture</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Zero trust network design with identity-based access, continuous verification and least-privilege principles.</p>
-        </div>
+        {{ end }}
       </div>
     </div>
+    {{ end }}
 
     <!-- Deliverables Section -->
+    {{ if $content.deliverables }}
     <div class="bg-slate-100 dark:bg-slate-900 py-12 border-t border-slate-200 dark:border-slate-800">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Deliverables</h2>
-          <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Every security engineering engagement produces documented, actionable deliverables.</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">{{ $content.deliverables.title }}</h2>
+          <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{{ $content.deliverables.subtitle }}</p>
         </div>
 
         <div class="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-3xl p-8 lg:p-12 shadow-xl border border-slate-100 dark:border-slate-700" data-aos="fade-up">
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            {{ range $index, $item := $content.deliverables.items }}
             <li class="flex items-start gap-3">
               <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Security Assessment</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Current state analysis and risk identification</span>
+                <span class="font-bold text-slate-900 dark:text-white block">{{ $item.title }}</span>
+                <span class="text-slate-600 dark:text-slate-400 text-sm">{{ $item.text }}</span>
               </div>
             </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Configuration Review</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Device configuration audit against security baselines</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Hardening Baseline</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Standardized security configuration templates</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Firewall Policy Review</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Rule analysis, optimization recommendations</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Network Segmentation Design</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Zone architecture and access control matrix</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Security Architecture</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">End-to-end security design documentation</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Implementation Plan</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Phased deployment procedure</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div>
-                <span class="font-bold text-slate-900 dark:text-white block">Security Documentation</span>
-                <span class="text-slate-600 dark:text-slate-400 text-sm">Complete security infrastructure documentation</span>
-              </div>
-            </li>
+            {{ end }}
           </ul>
         </div>
       </div>
     </div>
+    {{ end }}
 
     <!-- CTA Section -->
+    {{ if $content.cta }}
     <div class="bg-blue-600 dark:bg-blue-900 py-12">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Concerned about your network security posture?</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">{{ $content.cta.title }}</h2>
         <p class="text-blue-100 mb-8 max-w-xl mx-auto">
-          Our engineering team can assess your current infrastructure and design a hardened, segmented architecture.
+          {{ $content.cta.text }}
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="/contact" class="px-8 py-3 bg-white text-blue-700 font-bold rounded-xl hover:bg-slate-50 transition-all shadow-lg">
-            Request Security Assessment
+          <a href="{{ $content.cta.button.url }}" class="px-8 py-3 bg-white text-blue-700 font-bold rounded-xl hover:bg-slate-50 transition-all shadow-lg">
+            {{ $content.cta.button.text }}
           </a>
         </div>
       </div>
     </div>
+    {{ end }}
 </div>

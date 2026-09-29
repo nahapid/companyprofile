@@ -1,4 +1,4 @@
----
+﻿---
 title: "Enterprise Wi-Fi Deployment"
 summary: "Site survey, RF planning, VLAN architecture and centralized wireless management for enterprise-wide Wi-Fi coverage."
 date: 2026-09-10
@@ -18,9 +18,9 @@ An enterprise organization experienced poor wireless coverage, inconsistent perf
 ## Challenge
 
 - Inconsistent Wi-Fi coverage with dead zones across floors
-- No RF planning — access points placed without signal analysis
+- No RF planning - access points placed without signal analysis
 - Single SSID broadcasting without user role separation
-- No centralized wireless management — each AP configured independently
+- No centralized wireless management - each AP configured independently
 - Guest access mixed with corporate traffic on the same network
 
 ## Requirements
@@ -34,32 +34,32 @@ An enterprise organization experienced poor wireless coverage, inconsistent perf
 ## Proposed Architecture
 
 ```text
-     ┌────────────────────────────┐
-     │   Wireless Controller      │
-     │   (Centralized Mgmt)       │
-     └──────────┬─────────────────┘
-                │
-     ┌──────────┴─────────────────┐
-     │      Core Switch           │
-     └──┬───────┬──────┬──────────┘
-        │       │      │
+     +----------------------------+
+     |   Wireless Controller      |
+     |   (Centralized Mgmt)       |
+     +---------------------------+
+                |
+     +---------------------------+
+     |      Core Switch           |
+     +-------------------------+
+        |       |      |
     VLAN 10  VLAN 20  VLAN 30
     Corp WiFi Guest   IoT
-        │       │      │
-     ┌──┴──┐ ┌─┴──┐ ┌─┴──┐
-     │ AP  │ │ AP │ │ AP │  (Per Floor)
-     │ 1-N │ │1-N │ │1-N │
-     └─────┘ └────┘ └────┘
+        |       |      |
+     +----+ +---+ +---+
+     | AP  | | AP | | AP |  (Per Floor)
+     | 1-N | |1-N | |1-N |
+     +-----+ +----+ +----+
 ```
 
 ## Implementation
 
-1. **Site Survey** — Physical walkthrough and RF environment assessment
-2. **RF Planning** — Signal propagation modeling, AP placement optimization
-3. **Architecture** — VLAN design, SSID mapping, QoS policy
-4. **Deployment** — AP installation, controller configuration, VLAN activation
-5. **Validation** — Coverage verification, roaming tests, performance benchmarking
-6. **Handover** — Documentation, monitoring setup, operational training
+1. **Site Survey** - Physical walkthrough and RF environment assessment
+2. **RF Planning** - Signal propagation modeling, AP placement optimization
+3. **Architecture** - VLAN design, SSID mapping, QoS policy
+4. **Deployment** - AP installation, controller configuration, VLAN activation
+5. **Validation** - Coverage verification, roaming tests, performance benchmarking
+6. **Handover** - Documentation, monitoring setup, operational training
 
 ## Technology Stack
 
@@ -72,7 +72,8 @@ An enterprise organization experienced poor wireless coverage, inconsistent perf
 
 ## Outcome
 
-- **Predictable coverage** — RF-optimized AP placement eliminates dead zones
-- **Segmented access** — Separate SSIDs with VLAN isolation per user role
-- **Centralized management** — Single management interface for all access points
-- **Seamless roaming** — Uninterrupted connectivity when moving between areas
+- **Predictable coverage** - RF-optimized AP placement eliminates dead zones
+- **Segmented access** - Separate SSIDs with VLAN isolation per user role
+- **Centralized management** - Single management interface for all access points
+- **Seamless roaming** - Uninterrupted connectivity when moving between areas
+

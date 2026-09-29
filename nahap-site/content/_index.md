@@ -1,4 +1,4 @@
----
+﻿---
 title: 'NAHAP | Enterprise Network & Cybersecurity Engineering'
 description: 'NAHAP adalah penyedia layanan Enterprise Network, Cybersecurity, dan Managed Infrastructure untuk industri, korporat, dan pemerintahan di Indonesia.'
 summary: 'Enterprise Network & Cybersecurity Engineering'
@@ -6,9 +6,9 @@ date: 2026-09-26
 type: landing
 
 sections:
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 1 — HERO
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 1 - HERO
+  # --------------------------------------------------------------------------
   - block: hero_nahap
     id: top
     content:
@@ -49,9 +49,9 @@ sections:
           positions: ["top-1/3 left-1/4", "bottom-1/3 right-1/4"]
           sizes: ["w-[32rem] h-[32rem]", "w-[26rem] h-[26rem]"]
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 2 — CAPABILITIES STATS & LOGOS
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 2 - CAPABILITIES STATS & LOGOS
+  # --------------------------------------------------------------------------
   - block: stats_nahap
     id: stats_nahap
     content:
@@ -84,10 +84,10 @@ sections:
       spacing:
         padding: ['0', '0', '0', '0']
 
-  # ────────────────────────────────────────────────────────────────────────── 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 4 — ENGINEERING METHODOLOGY (Steps)
-  # ──────────────────────────────────────────────────────────────────────────
+  # -------------------------------------------------------------------------- 
+  # --------------------------------------------------------------------------
+  # SECTION 4 - ENGINEERING METHODOLOGY (Steps)
+  # --------------------------------------------------------------------------
   - block: methodology_nahap
     id: methodology
     content:
@@ -113,9 +113,9 @@ sections:
       spacing:
         padding: ['0', '0', '0', '0']
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 5 — CORE CAPABILITIES (Capabilities - Bento Grid)
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 5 - CORE CAPABILITIES (Capabilities - Bento Grid)
+  # --------------------------------------------------------------------------
   - block: capabilities_nahap
     id: services
     content:
@@ -139,9 +139,9 @@ sections:
       spacing:
         padding: ['0', '0', '0', '0']
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 6 — BUSINESS PROBLEMS
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 6 - BUSINESS PROBLEMS
+  # --------------------------------------------------------------------------
   - block: problems_nahap
     id: problems
     content:
@@ -165,9 +165,9 @@ sections:
       spacing:
         padding: ['0', '0', '0', '0']
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 7 — INDUSTRIES
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 7 - INDUSTRIES
+  # --------------------------------------------------------------------------
   - block: industries_nahap
     id: industries
     content:
@@ -197,9 +197,9 @@ sections:
       spacing:
         padding: ['0', '0', '0', '0']
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 8 — CASE STUDIES
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 8 - CASE STUDIES
+  # --------------------------------------------------------------------------
   - block: cta-image-paragraph
     id: case-studies
     content:
@@ -224,16 +224,16 @@ sections:
             - "Network Segmentation Best Practices"
           image: security-diagram.svg
           button:
-            text: "Baca Wawasan →"
+            text: "Baca Wawasan "
             url: "/insights/"
     design:
       css_class: "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200"
       spacing:
         padding: ["1.5rem", 0, "1.5rem", 0]
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 9 — FAQ
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 9 - FAQ
+  # --------------------------------------------------------------------------
   - block: faq
     id: faq
     content:
@@ -256,9 +256,9 @@ sections:
           answer: |
             Contact us through our consultation request form. Describe your current infrastructure, technical challenges and business requirements, and our engineering team will schedule a technical consultation.
 
-  # ──────────────────────────────────────────────────────────────────────────
-  # SECTION 10 — FINAL CTA
-  # ──────────────────────────────────────────────────────────────────────────
+  # --------------------------------------------------------------------------
+  # SECTION 10 - FINAL CTA
+  # --------------------------------------------------------------------------
   - block: cta-card
     id: cta
     content:
@@ -274,3 +274,4 @@ sections:
         css_class: "bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white shadow-2xl"
         css_style: ""
 ---
+
